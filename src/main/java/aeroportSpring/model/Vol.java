@@ -44,71 +44,23 @@ public class Vol {
 	private Aeroport aeroportDepart;
 	@OneToOne
 	private Aeroport aeroportArrivee;
+<<<<<<< HEAD:src/main/java/aeroportSpring/model/Vol.java
 
 	@OneToMany(mappedBy = "key.vol")
 	private Set<CompagnieAerienneVol> compagnieAerienneVols;
 
-	public Aeroport getAeroportDepart() {
-		return aeroportDepart;
-	}
-
-	public void setAeroportDepart(Aeroport aeroportDepart) {
-		this.aeroportDepart = aeroportDepart;
-	}
-
-	public Aeroport getAeroportArrivee() {
-		return aeroportArrivee;
-	}
-
-	public void setAeroportArrivee(Aeroport aeroportArrivee) {
-		this.aeroportArrivee = aeroportArrivee;
-	}
-
-	public void setAeroportArrivee(AeroportArrivee aeroportArrivee) {
-		this.aeroportArrivee = aeroportArrivee;
-	}
-
+=======
+	@OneToMany(mappedBy = "reservation")
+	private Set<Reservation> reservations;
+>>>>>>> master:src/main/java/model/Vol.java
 	@ManyToOne
 	@JoinColumn(name = "id_vol_compagnieAerienne", foreignKey = @ForeignKey(name = "id_vol_compagnieAerienne_fk"))
 	private CompagnieAerienne compagnieAerienne;
-
 	@Version
 	private int version;
-
-//	@ManyToOne
-//	@JoinColumn(name = "compagnie_aerienne", foreignKey = @ForeignKey(name = "compagnie_aerienne_fk"))
-//	private CompagnieAerienne compagnieAerienne;
-
-//	@ManyToOne
-//	@JoinColumn(name = "aeroport", foreignKey = @ForeignKey(name = "aeroport_fk"))
-//	private Aeroport aeroport;
-
-//	public CompagnieAerienne getCompagnieAerienne() {
-//		return compagnieAerienne;
-//	}
-
-//	public void setCompagnieAerienne(CompagnieAerienne compagnieAerienne) {
-//		this.compagnieAerienne = compagnieAerienne;
-//	}
-
-//	public Aeroport getAeroport() {
-//		return aeroport;
-//	}
-//
-//	public void setAeroport(Aeroport aeroport) {
-//		this.aeroport = aeroport;
-	// }
-
+	
 	public Vol() {
 		super();
-	}
-
-	public Vol(Date dateDepartVol, Date dateArriveeVol, Date heureDepartVol, Date heureArriveeVol) {
-		super();
-		this.dateDepartVol = dateDepartVol;
-		this.dateArriveeVol = dateArriveeVol;
-		this.heureDepartVol = heureDepartVol;
-		this.heureArriveeVol = heureArriveeVol;
 	}
 
 	public Long getIdVol() {
@@ -116,7 +68,7 @@ public class Vol {
 	}
 
 	public void setIdVol(Long idVol) {
-		idVol = idVol;
+		this.idVol = idVol;
 	}
 
 	public Date getDateDepartVol() {
@@ -151,6 +103,46 @@ public class Vol {
 		this.heureArriveeVol = heureArriveeVol;
 	}
 
+	public Aeroport getAeroportDepart() {
+		return aeroportDepart;
+	}
+
+	public void setAeroportDepart(Aeroport aeroportDepart) {
+		this.aeroportDepart = aeroportDepart;
+	}
+
+	public Aeroport getAeroportArrivee() {
+		return aeroportArrivee;
+	}
+
+	public void setAeroportArrivee(Aeroport aeroportArrivee) {
+		this.aeroportArrivee = aeroportArrivee;
+	}
+
+	public Set<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(Set<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+	public CompagnieAerienne getCompagnieAerienne() {
+		return compagnieAerienne;
+	}
+
+	public void setCompagnieAerienne(CompagnieAerienne compagnieAerienne) {
+		this.compagnieAerienne = compagnieAerienne;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -175,5 +167,4 @@ public class Vol {
 			return false;
 		return true;
 	}
-
 }
