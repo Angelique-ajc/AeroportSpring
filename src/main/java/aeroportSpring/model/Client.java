@@ -1,5 +1,7 @@
 package aeroportSpring.model;
 
+import java.util.Set;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -16,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -61,8 +64,8 @@ public abstract class Client {
 	@JoinColumn(name = "id_login", foreignKey = @ForeignKey(name = "client_id_login_fk"))
 	private Login loginClient;
 
-	@OneToMany
-	private Reservation reservation;
+	@OneToMany(mappedBy = "reservation")
+	private Set<Reservation> reservations;
 
 	@Version
 	private int version;
@@ -150,6 +153,22 @@ public abstract class Client {
 
 	public void setLogin(Login login) {
 		this.loginClient = login;
+	}
+
+	public Login getLoginClient() {
+		return loginClient;
+	}
+
+	public void setLoginClient(Login loginClient) {
+		this.loginClient = loginClient;
+	}
+
+	public Set<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(Set<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
 	@Override

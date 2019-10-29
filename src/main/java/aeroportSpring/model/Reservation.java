@@ -33,7 +33,8 @@ public class Reservation {
 	@ManyToOne
 	@JoinColumn(name = "id_vol_reservation", foreignKey = @ForeignKey(name = "reservation_id_vol_fk"))
 	private Vol vol;
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name = "id_client_reservation", foreignKey = @ForeignKey(name = "reservation_id_client_fk"))
 	private Client client;
 	@ManyToOne
 	@JoinColumn(name = "id_passager_reservation", foreignKey = @ForeignKey(name = "reservation_id_passager_fk"))

@@ -1,5 +1,7 @@
 package aeroportSpring.model;
 
+import java.util.Set;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,82 +31,60 @@ public class Passager {
 
 	@Column(name = "prenom_passager", length = 150)
 	private String prenomPassager;
-	
+
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "numero_passager")),
 			@AttributeOverride(name = "rue", column = @Column(name = "rue_passager", length = 255)),
 			@AttributeOverride(name = "ville", column = @Column(name = "ville_passager")),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "codepostal_passager", length = 5)) })
 	private Adresse adresse;
-	
-	@ManyToOne
-	@JoinColumn(name="reservation_id_reservation", foreignKey= @ForeignKey(name="salle_id_reservation_fk"))
-	private Reservation reservation;
-	
+
+	@OneToMany(mappedBy = "reservation")
+	private Set<Reservation> reservations;
+
 	public Passager() {
-		
-	}
 
-	public Passager(long idPassager, String nomPassager, String prenomPassager, Adresse adresse,
-			Reservation reservation) {
-		super();
-		this.idPassager = idPassager;
-		this.nomPassager = nomPassager;
-		this.prenomPassager = prenomPassager;
-		this.adresse = adresse;
-		this.reservation = reservation;
 	}
-
 
 	public long getIdPassager() {
 		return idPassager;
 	}
 
-
 	public void setIdPassager(long idPassager) {
 		this.idPassager = idPassager;
 	}
-
 
 	public String getNomPassager() {
 		return nomPassager;
 	}
 
-
 	public void setNomPassager(String nomPassager) {
 		this.nomPassager = nomPassager;
 	}
-
 
 	public String getPrenomPassager() {
 		return prenomPassager;
 	}
 
-
 	public void setPrenomPassager(String prenomPassager) {
 		this.prenomPassager = prenomPassager;
 	}
-
 
 	public Adresse getAdresse() {
 		return adresse;
 	}
 
-
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
 
-
-	public Reservation getReservation() {
-		return reservation;
+	public Set<Reservation> getReservations() {
+		return reservations;
 	}
 
-
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
+	public void setReservations(Set<Reservation> reservations) {
+		this.reservations = reservations;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -112,7 +93,6 @@ public class Passager {
 		result = prime * result + (int) (idPassager ^ (idPassager >>> 32));
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
