@@ -22,7 +22,7 @@ public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seqLogin")
 	@Column(name = "id_login")
-	private long loginId;
+	private Long loginId;
 	
 	@Column(name = "login_login", length = 15)
 	private String login;
@@ -51,6 +51,13 @@ public class Login {
 		this.login = login;
 		this.motDePasse = motDePasse;
 		this.admin = admin;
+	}
+	
+	
+
+	public Login(String login) {
+		super();
+		this.login = login;
 	}
 
 	public long getLoginId() {

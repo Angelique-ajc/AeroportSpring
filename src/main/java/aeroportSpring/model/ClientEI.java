@@ -21,6 +21,15 @@ public class ClientEI extends Client {
 
 	public ClientEI() {
 	}
+	
+	
+
+	public ClientEI(String prenomEI) {
+		super();
+		this.prenomEI = prenomEI;
+	}
+
+
 
 	public String getPrenomEI() {
 		return prenomEI;

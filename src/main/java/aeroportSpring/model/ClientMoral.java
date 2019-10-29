@@ -17,6 +17,15 @@ public class ClientMoral extends Client {
 
 	public ClientMoral() {
 	}
+	
+	
+
+	public ClientMoral(String siret) {
+		super();
+		this.siret = siret;
+	}
+
+
 
 	public String getSiret() {
 		return siret;
