@@ -6,21 +6,21 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-
 @Entity
 @DiscriminatorValue("CP")
-@NamedQueries({
-	@NamedQuery(name="ClientPhysique.findAllClientPhysique", 
-			query="select cp from ClientPhysique cp"),
-	@NamedQuery(name="ClientPhysique.findClientPhysiqueByVille",
-			query="select cp from ClientPhysique cp where lower(cp.adresse.ville) like :ville")
-})
+@NamedQueries({ @NamedQuery(name = "ClientPhysique.findAllClientPhysique", query = "select cp from ClientPhysique cp"),
+		@NamedQuery(name = "ClientPhysique.findClientPhysiqueByVille", query = "select cp from ClientPhysique cp where lower(cp.adresse.ville) like :ville") })
 public class ClientPhysique extends Client {
 
-	@Column(name = "prenom_client",length=100)
+	@Column(name = "prenom_client", length = 100)
 	private String prenomCP;
 
 	public ClientPhysique() {
+	}
+
+	public ClientPhysique(String prenomCP) {
+		super();
+		this.prenomCP = prenomCP;
 	}
 
 	public String getPrenomCP() {
