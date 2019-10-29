@@ -19,6 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+
 @Entity
 @Table(name = "vol")
 @SequenceGenerator(name = "seqVol", sequenceName = "seq_vol", initialValue = 100, allocationSize = 1)
@@ -28,21 +29,29 @@ public class Vol {
 	@Column(name = "id_vol")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVol")
 	private Long idVol;
+	
 	@Column(name = "date_depart_vol")
 	@Temporal(TemporalType.DATE)
 	private Date dateDepartVol;
+	
 	@Column(name = "date_arrivee_vol")
 	@Temporal(TemporalType.DATE)
 	private Date dateArriveeVol;
+	
 	@Column(name = "heure_depart_vol")
 	@Temporal(TemporalType.TIME)
 	private Date heureDepartVol;
+	
 	@Column(name = "heure_arrivee_vol")
 	@Temporal(TemporalType.TIME)
 	private Date heureArriveeVol;
-	@OneToOne
+	
+	@ManyToOne
+	@JoinColumn(name = "id_aeroport_depart", foreignKey = @ForeignKey(name = "aeroport_id_aeroport_depart_fk"))
 	private Aeroport aeroportDepart;
-	@OneToOne
+
+	@ManyToOne
+	@JoinColumn(name = "id_aeroport_arrivee", foreignKey = @ForeignKey(name = "aeroport_id_aeroport_arrivee_fk"))
 	private Aeroport aeroportArrivee;
 
 	@OneToMany(mappedBy = "key.vol")
@@ -50,13 +59,16 @@ public class Vol {
 
 	@OneToMany(mappedBy = "reservation")
 	private Set<Reservation> reservations;
-	
+
+	@OneToMany(mappedBy = "key.vol")
+	private Set<Escale> escales;
+
 	@ManyToOne
 	@JoinColumn(name = "id_vol_compagnieAerienne", foreignKey = @ForeignKey(name = "id_vol_compagnieAerienne_fk"))
 	private CompagnieAerienne compagnieAerienne;
 	@Version
 	private int version;
-	
+
 	public Vol() {
 		super();
 	}
@@ -139,6 +151,22 @@ public class Vol {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+	public Set<CompagnieAerienneVol> getCompagnieAerienneVols() {
+		return compagnieAerienneVols;
+	}
+
+	public void setCompagnieAerienneVols(Set<CompagnieAerienneVol> compagnieAerienneVols) {
+		this.compagnieAerienneVols = compagnieAerienneVols;
+	}
+
+	public Set<Escale> getEscales() {
+		return escales;
+	}
+
+	public void setEscales(Set<Escale> escales) {
+		this.escales = escales;
 	}
 
 	@Override

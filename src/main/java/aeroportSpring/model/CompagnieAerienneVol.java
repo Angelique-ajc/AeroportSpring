@@ -1,5 +1,6 @@
 package aeroportSpring.model;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -11,7 +12,8 @@ public class CompagnieAerienneVol {
 	@EmbeddedId
 	private CompagnieAerienneVolPk key;
 
-	private String id;
+	@Column(name = "numero_compagnie_aerienne_vol")
+	private String numero;
 
 	public CompagnieAerienneVol() {
 
@@ -28,6 +30,14 @@ public class CompagnieAerienneVol {
 
 	public void setKey(CompagnieAerienneVolPk key) {
 		this.key = key;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package aeroportSpring.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -10,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -30,6 +33,10 @@ public class Aeroport {
 	@ManyToOne
 	@JoinColumn(name = "id_ville_aeroport", foreignKey = @ForeignKey(name = "aeroport_id_ville_fk"))
 	private Ville villeAeroport;
+	@OneToMany(mappedBy = "idVol")
+	private Set<Vol> vols;
+	@OneToMany(mappedBy = "key.aeroport")
+	private Set<Escale> escales;
 	@Version
 	private int version;
 
@@ -66,6 +73,22 @@ public class Aeroport {
 
 	public void setVilleAeroport(Ville villeAeroport) {
 		this.villeAeroport = villeAeroport;
+	}
+
+	public Set<Escale> getEscales() {
+		return escales;
+	}
+
+	public void setEscales(Set<Escale> escales) {
+		this.escales = escales;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	// hashCode et equals sur id
