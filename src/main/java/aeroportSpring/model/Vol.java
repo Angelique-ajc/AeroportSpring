@@ -44,15 +44,13 @@ public class Vol {
 	private Aeroport aeroportDepart;
 	@OneToOne
 	private Aeroport aeroportArrivee;
-<<<<<<< HEAD:src/main/java/aeroportSpring/model/Vol.java
 
 	@OneToMany(mappedBy = "key.vol")
 	private Set<CompagnieAerienneVol> compagnieAerienneVols;
 
-=======
 	@OneToMany(mappedBy = "reservation")
 	private Set<Reservation> reservations;
->>>>>>> master:src/main/java/model/Vol.java
+	
 	@ManyToOne
 	@JoinColumn(name = "id_vol_compagnieAerienne", foreignKey = @ForeignKey(name = "id_vol_compagnieAerienne_fk"))
 	private CompagnieAerienne compagnieAerienne;

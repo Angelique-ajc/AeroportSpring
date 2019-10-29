@@ -1,9 +1,6 @@
 package aeroportSpring.model;
-<<<<<<< HEAD:src/main/java/aeroportSpring/model/Client.java
-=======
 
 import java.util.Set;
->>>>>>> master:src/main/java/model/Client.java
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
