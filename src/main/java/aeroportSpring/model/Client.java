@@ -18,7 +18,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -64,7 +63,7 @@ public abstract class Client {
 	@JoinColumn(name = "id_login", foreignKey = @ForeignKey(name = "client_id_login_fk"))
 	private Login loginClient;
 
-	@OneToMany(mappedBy = "reservation")
+	@OneToMany(mappedBy = "client")
 	private Set<Reservation> reservations;
 
 	@Version

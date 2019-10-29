@@ -16,7 +16,7 @@ public class Escale {
 	@EmbeddedId
 	private EscalePk key;
 
-	@Column(name = "heure_arrivee_escale")
+	@Column(name = "heure_depart_escale")
 	@Temporal(TemporalType.TIME)
 	private Date heureDepart;
 
@@ -76,7 +76,5 @@ public class Escale {
 			return false;
 		return true;
 	}
-	
-	
 
 }
