@@ -1,4 +1,4 @@
-package aeroportjpa.model;
+package aeroportSpring.model;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

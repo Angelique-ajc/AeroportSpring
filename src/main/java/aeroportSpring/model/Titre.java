@@ -1,4 +1,4 @@
-package aeroportjpa.model;
+package aeroportSpring.model;
 
 public enum Titre {
 	TP("titre physique"), TM("titre moral");
