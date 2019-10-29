@@ -52,6 +52,13 @@ public class Login {
 		this.motDePasse = motDePasse;
 		this.admin = admin;
 	}
+	
+	
+
+	public Login(String login) {
+		super();
+		this.login = login;
+	}
 
 	public long getLoginId() {
 		return loginId;
