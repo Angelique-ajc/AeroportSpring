@@ -1,4 +1,4 @@
-package aeroportjpa.model;
+package aeroportSpring.model;
 
 import java.util.Set;
 
@@ -12,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import aeroportjpa.model.Client;
+import aeroportSpring.model.Client;
 
 @Entity
 @Table(name="login")

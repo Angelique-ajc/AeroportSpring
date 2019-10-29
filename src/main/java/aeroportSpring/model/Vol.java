@@ -1,4 +1,4 @@
-package aeroportjpa.model;
+package aeroportSpring.model;
 
 import java.util.Date;
 
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -42,6 +43,8 @@ public class Vol {
 	private Aeroport aeroportDepart;
 	@OneToOne
 	private Aeroport aeroportArrivee;
+	@OneToMany
+	private Reservation reservation;
 
 	public Aeroport getAeroportDepart() {
 		return aeroportDepart;
