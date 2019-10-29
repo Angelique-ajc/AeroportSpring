@@ -91,6 +91,14 @@ public class Aeroport {
 		this.version = version;
 	}
 
+	public Set<Vol> getVols() {
+		return vols;
+	}
+
+	public void setVols(Set<Vol> vols) {
+		this.vols = vols;
+	}
+
 	// hashCode et equals sur id
 	@Override
 	public int hashCode() {
