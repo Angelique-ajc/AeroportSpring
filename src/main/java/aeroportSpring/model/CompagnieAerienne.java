@@ -1,4 +1,4 @@
-package aeroportjpa.model;
+package aeroportSpring.model;
 
 import java.util.Set;
 
@@ -25,6 +25,9 @@ public class CompagnieAerienne {
 
 	@OneToMany(mappedBy = "compagnieAerienne")
 	private Set<Vol> vols;
+
+	@OneToMany(mappedBy = "key.compagnieAerienne")
+	private Set<CompagnieAerienneVol> compagnieArienneVols;
 
 	@Version
 	private int version;
