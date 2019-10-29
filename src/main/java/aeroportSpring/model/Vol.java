@@ -12,13 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
-
 
 @Entity
 @Table(name = "vol")
@@ -29,23 +27,23 @@ public class Vol {
 	@Column(name = "id_vol")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVol")
 	private Long idVol;
-	
+
 	@Column(name = "date_depart_vol")
 	@Temporal(TemporalType.DATE)
 	private Date dateDepartVol;
-	
+
 	@Column(name = "date_arrivee_vol")
 	@Temporal(TemporalType.DATE)
 	private Date dateArriveeVol;
-	
+
 	@Column(name = "heure_depart_vol")
 	@Temporal(TemporalType.TIME)
 	private Date heureDepartVol;
-	
+
 	@Column(name = "heure_arrivee_vol")
 	@Temporal(TemporalType.TIME)
 	private Date heureArriveeVol;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_aeroport_depart", foreignKey = @ForeignKey(name = "aeroport_id_aeroport_depart_fk"))
 	private Aeroport aeroportDepart;
@@ -57,7 +55,7 @@ public class Vol {
 	@OneToMany(mappedBy = "key.vol")
 	private Set<CompagnieAerienneVol> compagnieAerienneVols;
 
-	@OneToMany(mappedBy = "reservation")
+	@OneToMany(mappedBy = "vol")
 	private Set<Reservation> reservations;
 
 	@OneToMany(mappedBy = "key.vol")
